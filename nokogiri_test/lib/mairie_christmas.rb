@@ -43,15 +43,5 @@ def create_town_email_hash (town_url_array)
   end
   return result
 end
-=begin
-result = []
-  x = 0
-  key_array.each do |key|
-    mini_hash = Hash.new
-    mini_hash[key] = value_array[x]
-    x = x + 1
-    result << mini_hash
-  end
-  return result
-=end
+
 puts create_town_email_hash(create_town_url_array(page))
