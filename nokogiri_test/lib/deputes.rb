@@ -5,7 +5,6 @@ require 'pry'
 
 #get names and lastnames
 def get_deputee_name(page)
-  page = Nokogiri::HTML(open('https://www.voxpublic.org/spip.php?page=annuaire&cat=deputes&pagnum=600&lang=fr'))
   return name = page.css('h2.titre_normal')
 end
 

@@ -4,10 +4,16 @@ require 'open-uri'
 page = Nokogiri::HTML(open("https://coinmarketcap.com/all/views/all/"))
 
 describe "method create_hash" do
-	it "contain at least Bitcoin" do
-		expect(create_hash(page.xpath('//td//a[contains(@href,currencies)]'),[">", 1],["<", 1])).to include("Bitcoin")
+	it "should contain at least Bitcoin" do
+		expect(create_key_array(page)).to include("Bitcoin")
 	end
-	it "is have at least 200 length" do
-		expect(create_hash(page.xpath('//td//a[contains(@href,currencies)]'),[">", 1],["<", 1])).to have_size(200)
+	it "should be at least 200 currencies long" do
+		expect(create_key_array(page).length).to be >= 200
 	end
+end
+
+describe "create_hash" do
+ it "should contain Bitcoin and its correct value" do
+ 	expect((create_hash(create_key_array(page), create_value_array(page)))[0].keys).to eq(["Bitcoin"])
+ end
 end
