@@ -1,4 +1,8 @@
-string = "$1.45"
+require 'nokogiri'
+require 'open-uri'
 
 
-string.include?(?$)? (puts "yes") : (puts "no")
+page = Nokogiri::HTML(open('https://coinmarketcap.com/all/views/all/'))
+page.css('div#__next table tr td[5]').each do |el|
+   puts el.text
+end
