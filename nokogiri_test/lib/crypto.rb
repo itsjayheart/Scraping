@@ -31,7 +31,6 @@ def create_town_email_hash (town_url_array)
   page = Nokogiri::HTML(open("http://annuaire-des-mairies.com/val-d-oise.html"))
   page.xpath('//td//a[contains(@href, 95)]').each do |el|
     puts el.text
-    town_list << el.text
   end
   return towns_list.zip(email_array)
 end
